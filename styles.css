@@ -557,7 +557,7 @@ a.part:hover .part-go{transform:translate(3px,-3px);}
 .contact-split .contacts li:first-child{border-top:1px solid var(--coffee);}
 .contact-portrait{contain:size;margin:0;border:3px solid var(--coffee);box-shadow:8px 8px 0 var(--brick);overflow:hidden;}
 .contact-portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;}
-@media (max-width:820px){.contact-split{grid-template-columns:1fr;gap:32px;}.contact-portrait{contain:none;width:min(100%,320px);aspect-ratio:4/5;}.contacts li{flex-wrap:wrap;gap:4px 16px;}.contacts a{overflow-wrap:anywhere;font-size:18px;}}
+@media (max-width:820px){.contact-split{grid-template-columns:1fr;gap:32px;}.contact-portrait{contain:none;width:min(calc(100% - 8px),320px);aspect-ratio:4/5;margin:0 auto;translate:-4px 0;}.contacts li{flex-direction:column;align-items:flex-start;gap:4px;}.contacts a{overflow-wrap:anywhere;font-size:18px;}}
 .contacts li{display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid var(--coffee);}
 .contacts .k{flex:none;width:96px;font-family:var(--f-mono);font-size:12px;line-height:16px;text-transform:uppercase;letter-spacing:.08em;color:var(--coffee-mid);font-weight:500;}
 .contacts a{font-size:20px;line-height:28px;font-weight:600;letter-spacing:-.02em;color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;}
@@ -589,7 +589,7 @@ a.part:hover .part-go{transform:translate(3px,-3px);}
   .copy-tip::after{left:auto;right:8px;margin-left:0;}
 }
 .copy-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);}
-@media (max-width:820px){.contacts .copy{min-height:44px;}.contacts .copy-addr{font-size:18px;overflow-wrap:anywhere;}}
+@media (max-width:820px){.contacts .copy{min-height:44px;margin:0;padding-left:0;}.contacts .copy-addr{font-size:18px;overflow-wrap:anywhere;}}
 .contacts .pending{font-size:15px;color:var(--coffee-mid);}
 
 footer{max-width:var(--maxw);margin:40px auto 0;padding:24px var(--edge) 48px;border-top:3px solid var(--coffee);font-family:var(--f-mono);font-size:12px;line-height:16px;text-transform:uppercase;letter-spacing:.08em;color:var(--coffee-mid);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
