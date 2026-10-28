@@ -1,8 +1,8 @@
 // Art cards. Clicking a work lifts it out of the gallery, grows it to a readable
 // size in the middle of the screen, and flips it over to its statement (with a
 // mini version of the piece on the back). The ← → buttons or arrow keys step to
-// the previous or next work without flipping back (they stop at the first and
-// last work; no wrap-around). Clicking the card, the backdrop, the close button,
+// the previous or next work without flipping back, as does a sideways swipe on a
+// phone (they stop at the first and last work; no wrap-around). Clicking the card, the backdrop, the close button,
 // or pressing Escape flips it back into the spot of whichever work is showing.
 // The picture on the back opens a full-screen zoom view: click or tap to zoom in
 // where you point, drag to move around, scroll or pinch to zoom further.
@@ -101,6 +101,17 @@
     layer.querySelector('.flip-prev').addEventListener('click', nav(-1));
     layer.querySelector('.flip-next').addEventListener('click', nav(1));
     layer.querySelector('.flip-zoom').addEventListener('click', function () { zoomIn(open); });
+    // on touch screens, a sideways swipe across the card steps to the previous / next work
+    var sw = null;
+    dialog.addEventListener('touchstart', function (e) {
+      sw = e.touches.length === 1 ? { x: e.touches[0].clientX, y: e.touches[0].clientY } : null;
+    }, { passive: true });
+    dialog.addEventListener('touchend', function (e) {
+      if (!sw) return;
+      var t = e.changedTouches[0], dx = t.clientX - sw.x, dy = t.clientY - sw.y;
+      sw = null;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1);
+    });
     dialog.addEventListener('click', function (e) {
       if (e.target.closest('.flip-nav') || e.target.closest('.flip-mini')) return;
       if (!e.target.closest('.flip-text') || e.target.closest('.flip-close')) hide();

@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Fragment+Mono&display=swap" rel="stylesheet" />
 <script>try{var f=sessionStorage.getItem("flood");if(f){sessionStorage.removeItem("flood");document.documentElement.setAttribute("data-flood","");document.documentElement.style.setProperty("--flood",f);}}catch(e){}</script>
-<link rel="stylesheet" href="styles.css?v=18" />
+<link rel="stylesheet" href="styles.css?v=21" />
 <link rel="icon" href="favicon.svg" />
 <style>
   .home{
@@ -196,7 +196,7 @@
     <div class="home-left">
       <div class="cover">
         <div class="cover-frame">
-          <figure class="ph cover-ph"><span class="cap">Portraits go here</span></figure>
+          <figure class="ph cover-ph" aria-hidden="true"></figure>
           <img class="cover-img" data-src="images/portraits/portrait-1.jpg" alt="Portrait of Dom Min" style="object-position:50% 25%">
           <img class="cover-img" data-src="images/portraits/portrait-2.jpg" alt="Dom brewing pour-over coffee behind a counter" style="object-position:50% 30%">
           <img class="cover-img" data-src="images/portraits/portrait-3.jpg" alt="Dom weighing a sample on a lab balance" style="object-position:45% 30%">
@@ -335,8 +335,9 @@
 </main>
 <script src="reveal.js?v=2" defer></script>
 <script src="nav.js?v=3" defer></script>
+<script src="skeleton.js" defer></script>
 <script src="mapguard.js" defer></script>
-<script src="cover.js?v=2" defer></script>
+<script src="cover.js?v=3" defer></script>
 <script src="peek.js?v=3" defer></script>
 </body>
 </html>

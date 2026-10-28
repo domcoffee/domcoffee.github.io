@@ -1,6 +1,7 @@
 // Home cover slideshow. Photos slide in from the right every few seconds;
 // small dots along the bottom show where you are and jump to a photo.
-// Only the first photo loads up front; each next one loads a slide ahead.
+// Only the first photo loads up front (a pulsing skeleton holds its place until
+// it arrives); each next one loads a slide ahead.
 // Reduced motion: no autoplay, and dots switch photos without sliding.
 (function () {
   var frame = document.querySelector('.cover-frame');
@@ -16,7 +17,8 @@
     if (!img.getAttribute('src') && img.dataset.src) img.src = img.dataset.src;
   }
 
-  frame.classList.add('has-photos');
+  // the pulsing skeleton behind the photos stays until the first one has arrived
+  imgs[0].addEventListener('load', function () { frame.classList.add('has-photos'); }, { once: true });
   load(imgs[0]);
   imgs[0].classList.add('on');
   if (imgs.length < 2) return;
