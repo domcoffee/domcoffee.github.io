@@ -644,6 +644,30 @@ footer a{color:var(--coffee-mid);}
 .flip-close:hover{color:var(--accent);}
 .flip-close:focus-visible{outline:3px solid var(--accent);outline-offset:4px;}
 body.flip-open{overflow:hidden;}
+/* the picture on the card's back opens the zoom view; the + badge marks it */
+.flip-mini{position:relative;}
+.flip-zoom{all:unset;display:flex;align-items:center;justify-content:center;width:100%;height:100%;cursor:zoom-in;}
+.flip-zoom:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.zoom-badge{position:absolute;right:8px;bottom:8px;width:28px;height:28px;display:grid;place-items:center;pointer-events:none;
+  font:700 20px/1 var(--f-body);color:var(--cream);background:var(--accent);transition:transform .45s var(--ease);}
+.flip-mini:hover .zoom-badge{transform:rotate(90deg);}
+.zoom-layer{position:fixed;inset:0;z-index:calc(var(--z-header) + 20);touch-action:none;overflow:hidden;cursor:zoom-out;}
+.zoom-backdrop{position:absolute;inset:0;background:rgba(26,20,17,.94);opacity:0;transition:opacity .4s var(--ease);}
+.zoom-layer.in .zoom-backdrop{opacity:1;}
+.zoom-img{position:absolute;transform-origin:0 0;cursor:zoom-in;user-select:none;-webkit-user-select:none;will-change:transform;}
+.zoom-img.glide{transition:transform .45s var(--ease);}
+.zoom-layer.zoomed,.zoom-layer.zoomed .zoom-img{cursor:grab;}
+.zoom-layer.dragging,.zoom-layer.dragging .zoom-img{cursor:grabbing;}
+.zoom-close{position:absolute;top:16px;right:20px;margin:0;padding:4px 0;border:0;background:none;cursor:pointer;
+  font:600 14px/20px var(--f-body);color:var(--cream);opacity:0;transition:opacity .4s var(--ease),color .25s var(--ease);
+  text-decoration:underline;text-decoration-thickness:2px;text-decoration-color:var(--accent);text-underline-offset:6px;}
+.zoom-close:hover{color:#fff;}
+.zoom-close:focus-visible{outline:3px solid var(--accent);outline-offset:4px;}
+.zoom-hint{position:absolute;left:0;right:0;bottom:16px;margin:0;text-align:center;pointer-events:none;
+  font-family:var(--f-mono);font-size:11px;line-height:16px;letter-spacing:.08em;text-transform:uppercase;color:rgba(250,249,246,.6);
+  opacity:0;transition:opacity .4s var(--ease);}
+.zoom-layer.in .zoom-close,.zoom-layer.in .zoom-hint{opacity:1;}
+.zoom-layer.zoomed .zoom-hint{opacity:0;}
 /* card footer: flip back on the left, previous / next on the right */
 .flip-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:16px;}
 .flip-nav{display:flex;gap:8px;}
